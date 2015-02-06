@@ -23,13 +23,13 @@ for phylo in spinfo['items']:
         specie_name = specie['text']
         assembly = specie['assembly'].replace('.','_')
         specie_database = specie[database]
-        print ".".join([phylo_name, specie_name, assembly, database]) + '=' + specie_database
+        print ".".join([phylo_name, specie_name, assembly, database]).replace(' ', '_') + '=' + specie_database
         if seq_url in specie:
             sequence_url = specie[seq_url]
-            print ".".join([phylo_name, specie_name, assembly, seq_url]) + '=' + sequence_url
+            print ".".join([phylo_name, specie_name, assembly, seq_url]).replace(' ', '_') + '=' + sequence_url
         if var_url in specie:
             variation_url = specie[var_url]
-            print ".".join([phylo_name, specie_name, assembly, var_url]) + '=' + variation_url
+            print ".".join([phylo_name, specie_name, assembly, var_url]).replace(' ', '_') + '=' + variation_url
         if reg_url in specie:
             regulation_url = specie[reg_url]
-            print ".".join([phylo_name, specie_name, assembly, reg_url]) + '=' + regulation_url
+            print ".".join([phylo_name, specie_name, assembly, reg_url]).replace(' ', '_') + '=' + regulation_url
