@@ -40,11 +40,17 @@ def get_ensembl_properties(phylo):
 def get_species_properties(phylo):
     species = []
     for specie in phylo['items']:
-        species_dict = {}
-        species_dict['name'] = specie['text']
-        species_dict['assembly'] = [{'name':specie['assembly'], 'database':specie['database']}]
+	species_name = specie['text']
+        existing_specie = [ specie for specie in species if specie['name'] == species_name ]
+	if len(existing_specie) == 0:
+		species_dict = {}
+        	species_dict['name'] = specie['text']
+	        species_dict['assembly'] = [{'name':specie['assembly'], 'database':specie['database']}]
+		species.append(species_dict)
+	else:
+		print specie
+		existing_specie[0]['assembly'].append({'name':specie['assembly'], 'database':specie['database']})
         #species_dict['database'] = specie['database']
-        species.append(species_dict)
 
     return species
 
