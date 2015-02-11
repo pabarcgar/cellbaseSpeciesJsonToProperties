@@ -52,7 +52,7 @@ def get_species_id(species_name, all_alias):
 
 def get_species_properties(phylo, all_alias):
     scientific_name_tag = 'scientificName'
-    ensembl_version_tag = 'database'
+    ensembl_version_tag = 'ensemblVersion'
     species = []
     for specie in phylo['items']:
         species_name = specie['text']
