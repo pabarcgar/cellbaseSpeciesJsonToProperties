@@ -65,11 +65,11 @@ def get_species_properties(phylo, all_alias):
             species_dict = collections.OrderedDict()
             species_dict['id'] = get_species_id(species_name, all_alias)
             species_dict[scientific_name_tag] = species_name
-            species_dict['assembly'] = [{'name':specie['assembly'], ensembl_version_tag:ensembl_version}]
+            species_dict['assemblies'] = [{'name':specie['assembly'], ensembl_version_tag:ensembl_version}]
             species.append(species_dict)
         else:
             #print specie
-            existing_specie[0]['assembly'].append({'name':specie['assembly'], ensembl_version_tag:ensembl_version})
+            existing_specie[0]['assemblies'].append({'name':specie['assembly'], ensembl_version_tag:ensembl_version})
             #species_dict['database'] = specie['database']
 
     return species
