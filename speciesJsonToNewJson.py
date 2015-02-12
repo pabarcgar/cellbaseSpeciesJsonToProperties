@@ -87,7 +87,7 @@ def sort_download_properties(download_properties):
     ordered_phylos = ['Vertebrates', 'Metazoa', 'Fungi', 'Protist', 'Plants']
     for phylo_name in ordered_phylos:
         phylo = download_properties[phylo_name]
-        sorted_download_properties[phylo_name] = phylo
+        sorted_download_properties[phylo_name.lower()] = phylo
     return sorted_download_properties
 
 f1 = open('species.json')
