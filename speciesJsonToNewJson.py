@@ -75,11 +75,11 @@ def get_species_properties(phylo, all_alias):
     return species
 
 
-def process_phylo(phylo, all_alias):
-    phylo_dict = {}
-    #phylo_dict['ensembl_database'] = get_ensembl_properties(phylo)
-    phylo_dict['species'] = get_species_properties(phylo, all_alias)
-    return phylo_dict
+# def process_phylo(phylo, all_alias):
+#     phylo_dict = {}
+#     #phylo_dict['ensembl_database'] = get_ensembl_properties(phylo)
+#     phylo_dict['species'] = get_species_properties(phylo, all_alias)
+#     return phylo_dict
 
 
 def sort_download_properties(download_properties):
@@ -100,8 +100,8 @@ all_alias = get_all_alias()
 download_properties = {}
 for phylo in spinfo['items']:
     phylo_name = phylo['text']
-    phylo_dict = process_phylo(phylo, all_alias)
-    download_properties[phylo_name] = phylo_dict
+    #phylo_dict = process_phylo(phylo, all_alias)
+    download_properties[phylo_name] = get_species_properties(phylo, all_alias)
 
 sorted_download_properties = sort_download_properties(download_properties)
 
