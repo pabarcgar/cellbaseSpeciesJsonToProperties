@@ -66,6 +66,7 @@ def get_species_properties(phylo, all_alias):
             species_dict['id'] = get_species_id(species_name, all_alias)
             species_dict[scientific_name_tag] = species_name
             species_dict['assemblies'] = [{'name':specie['assembly'], ensembl_version_tag:ensembl_version}]
+            species_dict['data'] = ["genome_info", "genome_sequence", "gene", "variation", "regulation"]
             species.append(species_dict)
         else:
             #print specie
@@ -95,6 +96,11 @@ text = f1.read()
 f1.close()
 spinfo = json.loads(text)
 
+f1 = open('generalOptions.json')
+text = f1.read()
+f1.close()
+general_info = json.loads(text, object_pairs_hook=collections.OrderedDict)
+
 all_alias = get_all_alias()
 
 download_properties = {}
@@ -105,6 +111,6 @@ for phylo in spinfo['items']:
 
 sorted_download_properties = sort_download_properties(download_properties)
 
-properties = {'species': sorted_download_properties}
+general_info['species'] = sorted_download_properties
 
-print json.dumps(properties)
+print json.dumps(general_info)
